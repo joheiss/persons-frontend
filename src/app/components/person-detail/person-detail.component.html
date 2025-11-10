@@ -1,0 +1,52 @@
+<h2>Person Details</h2>
+
+@if (loading) {
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+} @else if (person) {
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <label class="form-label fw-bold">UUID:</label>
+        <p class="form-control-plaintext">{{ person.uuid }}</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Name:</label>
+        <p class="form-control-plaintext">{{ person.name }}</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Date of Birth:</label>
+        <p class="form-control-plaintext">{{ person.dateOfBirth }}</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Score:</label>
+        <p class="form-control-plaintext">{{ person.score }}</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Salary:</label>
+        <p class="form-control-plaintext">{{ person.salary | number:'1.2-2' }}</p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Active:</label>
+        <p class="form-control-plaintext">
+          @if (person.active) {
+            <span class="badge bg-success">Active</span>
+          } @else {
+            <span class="badge bg-secondary">Inactive</span>
+          }
+        </p>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-bold">Comment:</label>
+        <p class="form-control-plaintext">{{ person.comment || '-' }}</p>
+      </div>
+      <button class="btn btn-primary" (click)="goBack()" data-cy="button-back">BACK</button>
+    </div>
+  </div>
+} @else {
+  <div class="alert alert-warning">Person not found</div>
+  <button class="btn btn-primary" (click)="goBack()" data-cy="button-back">BACK</button>
+}
