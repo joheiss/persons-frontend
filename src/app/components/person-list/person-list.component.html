@@ -1,7 +1,7 @@
 <h2>Persons List</h2>
 
 <div class="mb-3">
-  <button class="btn btn-primary" (click)="addPerson()">
+  <button data-cy="button-add" class="btn btn-primary" (click)="addPerson()">
     <i class="bi bi-plus-circle"></i> Add Person
   </button>
 </div>
@@ -29,19 +29,19 @@
     <tbody>
       @for (person of persons; track person.uuid) {
         <tr>
-          <td>{{ person.uuid }}</td>
-          <td>{{ person.name }}</td>
-          <td>{{ person.dateOfBirth }}</td>
-          <td>{{ person.score }}</td>
-          <td>{{ person.salary | number:'1.2-2' }}</td>
-          <td>
+          <td data-cy="cell-uuid">{{ person.uuid }}</td>
+          <td data-cy="cell-name">{{ person.name }}</td>
+          <td data-cy="cell-dateOfBirth">{{ person.dateOfBirth }}</td>
+          <td data-cy="cell-score">{{ person.score }}</td>
+          <td data-cy="cell-salary">{{ person.salary | number:'1.2-2' }}</td>
+          <td data-cy="cell-active">
             @if (person.active) {
               <span class="badge bg-success">Active</span>
             } @else {
               <span class="badge bg-secondary">Inactive</span>
             }
           </td>
-          <td>{{ person.comment || '-' }}</td>
+          <td data-cy="cell-comment">{{ person.comment || '-' }}</td>
           <td>
             <button class="btn btn-sm btn-info me-1" (click)="viewPerson(person.uuid)" data-cy="button-view" title="View">
               <i class="bi bi-eye"></i>
