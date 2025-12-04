@@ -13,6 +13,8 @@ describe('Person List and Detail', () => {
     cy.get('table tbody tr').first().find("[data-cy='button-view']").click();
     cy.url().should('match', /\/persons\/\d+/);
     cy.get('app-person-detail').should('exist');
+    cy.get('[data-cy="button-back"]').should('exist').click();
+    cy.url().should('match', /\/persons$/);
   });
 
   it('should display person details correctly', () => {

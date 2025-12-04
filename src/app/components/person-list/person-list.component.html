@@ -28,7 +28,7 @@
     </thead>
     <tbody>
       @for (person of persons; track person.uuid) {
-        <tr>
+        <tr class="pointer" (click)="viewPerson(person.uuid)">
           <td data-cy="cell-uuid">{{ person.uuid }}</td>
           <td data-cy="cell-name">{{ person.name }}</td>
           <td data-cy="cell-dateOfBirth">{{ person.dateOfBirth }}</td>
